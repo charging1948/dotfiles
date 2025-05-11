@@ -1,0 +1,5 @@
+export HYPRCURSOR_SIZE=24
+export HYPRCURSOR_THEME="rose-pine-hyprcursor"
+
+# TODO: Check if there is a better way to do this. Symlinks should not change, but card1 and card0 are dynamically assigned at boot.
+# export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card0"

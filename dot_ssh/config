@@ -1,0 +1,25 @@
+AddKeysToAgent yes
+
+Host *
+  AddKeysToAgent yes
+  ForwardAgent Yes
+
+Host j-sh.de
+  User jk
+  ForwardAgent Yes
+
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+
+Host master
+  HostName 127.0.0.1
+  User vagrant
+  Port 2201
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/jk/code/dhbw/vagrant-hadoop-cluster/.vagrant/machines/master/virtualbox/private_key
+  IdentitiesOnly yes
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no

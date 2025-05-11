@@ -1,0 +1,22 @@
+[user]
+	name = Jo
+	email = {{ .email }}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCc1aqDE9PSLaDrqeOtugVzCCJ65qQkHFD+xEFM568J joachim.dev@pm.me
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+[core]
+	autocrlf = input
+[http]
+	lowSpeedLimit = 1000
+	lowSpeedTime = 60
+	postBuffer = 524288000
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
