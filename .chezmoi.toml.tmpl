@@ -1,4 +1,5 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
+encryption = "age"
 
 [data]
     email = {{ $email | quote }}
@@ -25,7 +26,6 @@
         {{ printf "%q" "{{ .Target }}" }},
     ]
 
-encryption = "age"
 [age]
     identities = ["/home/jk/key.txt"]
     recipients = ["age1wuggwh8h0vu36c7jt367m4vwsnhcffwf0y983jmdneudpez9k4vs2wa8x4"]
