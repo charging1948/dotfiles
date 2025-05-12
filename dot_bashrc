@@ -10,6 +10,9 @@ fi
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+if ! [[ "$PATH" =~ "$(brew --prefix rustup)/bin:" ]]; then
+    PATH="$(brew --prefix rustup)/bin:$PATH"
+fi
 export PATH
 
 export EDITOR="nvim"
