@@ -14,12 +14,12 @@ export PATH
 
 export EDITOR="nvim"
 
-# # Drop into fish, if not inside login shell or if executed as "bash -c 'xxxx'"
-# if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
-# then
-# 	shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-# 	exec fish $LOGIN_OPTION
-# fi
+# Drop into fish, if not inside login shell or if executed as "bash -c 'xxxx'"
+if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
+then
+	shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+	exec fish $LOGIN_OPTION
+fi
 
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
