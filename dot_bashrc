@@ -45,3 +45,4 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+# vim:set ft=bash
