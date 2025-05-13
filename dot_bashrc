@@ -9,6 +9,9 @@ fi
 # Setup BREW
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# Setup SSH Agent
+eval `ssh-agent`
+
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
