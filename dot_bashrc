@@ -10,7 +10,9 @@ fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Setup SSH Agent
-eval `ssh-agent`
+if [[ "$SSH_AUTH_SOCK" = "" ]]; then
+    eval `ssh-agent` >/dev/null 2>/dev/null
+fi
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
