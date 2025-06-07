@@ -46,4 +46,4 @@ font-family = "BlexMono Nerd Font Mono"
 
 theme = "catppuccin-mocha"
 
-command = /usr/bin/fish --login --interactive
+command = /usr/bin/fish --login --interactive -c "cd ~"
