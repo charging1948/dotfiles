@@ -40,16 +40,17 @@ export EDITOR="nvim"
 # Drop into fish, if not inside login shell or if executed as "bash -c 'xxxx'"
 # Only in interactive shells and when desktop session is already running
 # $- == *i* && 
-if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
+if [[ $- == *i* && $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
 then
-    shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-    exec fish $LOGIN_OPTION
-    # # Check if desktop session is fully started (not during startup)
-    # if [[ -n ${XDG_CURRENT_DESKTOP} && -n ${XDG_SESSION_TYPE} && ( -n ${KDE_FULL_SESSION} || -n ${PLASMA_DESKTOP_SESSION} ) ]]
-    # then
-    #     shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-    #     exec fish $LOGIN_OPTION
-    # fi
+    # shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+    # exec fish $LOGIN_OPTION
+ 
+    # Check if desktop session is fully started (not during startup)
+    if [[ -n ${XDG_CURRENT_DESKTOP} && -n ${XDG_SESSION_TYPE} && ( -n ${KDE_FULL_SESSION} || -n ${PLASMA_DESKTOP_SESSION} ) ]]
+    then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+        exec fish $LOGIN_OPTION
+    fi
 fi
 
 
