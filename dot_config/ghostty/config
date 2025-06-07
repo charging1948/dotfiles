@@ -46,4 +46,4 @@ font-family = "BlexMono Nerd Font Mono"
 
 theme = "catppuccin-mocha"
 
-shell-integration = fish
+command = /usr/local/bin/fish --login --interactive
