@@ -45,3 +45,5 @@
 font-family = "BlexMono Nerd Font Mono"
 
 theme = "catppuccin-mocha"
+
+shell-integration = fish
