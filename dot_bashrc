@@ -6,8 +6,10 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Setup BREW
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Setup BREW (if available)
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # Setup SSH Agent
 if [[ "$SSH_AUTH_SOCK" = "" ]]; then
