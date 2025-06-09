@@ -9,6 +9,10 @@ fi
 # Setup BREW (if available)
 if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    if ! [[ "$PATH" =~ "$(brew --prefix rustup)/bin:" ]]; then
+        PATH="$(brew --prefix rustup)/bin:$PATH"
+    fi
 fi
 
 # Setup SSH Agent
@@ -19,9 +23,6 @@ fi
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-if ! [[ "$PATH" =~ "$(brew --prefix rustup)/bin:" ]]; then
-    PATH="$(brew --prefix rustup)/bin:$PATH"
 fi
 if ! [[ "$PATH" =~ "$HOME/.cargo/bin:" ]]; then
     PATH="$HOME/.cargo/bin:$PATH"
