@@ -36,6 +36,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# Add uutils as their unaliased versions (thus replacing the normal coreutils)
+export PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:$PATH"
+
 export PATH
 
 export EDITOR="nvim"
