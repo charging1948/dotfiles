@@ -23,3 +23,21 @@ Host master
   IdentitiesOnly yes
   UserKnownHostsFile /dev/null
   StrictHostKeyChecking no
+
+Host birdstrike-vm
+  HostName 10.50.15.80
+  User birdstrike
+  PreferredAuthentications password
+  PubkeyAuthentication no
+  PasswordAuthentication yes
+  ForwardAgent yes
+  SetEnv TERM=xterm-256color
+
+Host birdstrike-ai
+  HostName 10.50.15.140
+  User birdstrike
+  PreferredAuthentications password
+  PubkeyAuthentication no
+  PasswordAuthentication yes
+  ForwardAgent yes
+  SetEnv TERM=xterm-256color
