@@ -6,7 +6,7 @@ status is-interactive; and begin
     # Aliases
     alias cd z
     alias cdi zi
-    # alias wp-switch 'swww img $(fd --extension "gif" --follow . ~/Pictures/Wallpapers/ | fzf --preview='\''preview_gif {}'\'')'
+    alias wp-switch 'swww img $(fd --extension "gif" --follow . ~/Pictures/Wallpapers/ | fzf --preview='\''preview_gif {}'\'')'
 
     set fish_greeting # Disable greeting
 
