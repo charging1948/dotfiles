@@ -27,6 +27,8 @@ status is-interactive; and begin
 
     direnv hook fish | source
 
+    atuin init fish | source
+
     function starship_transient_prompt_func
         starship module character
     end
