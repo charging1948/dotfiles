@@ -1,5 +1,5 @@
 
-app_launch_prefix = "uwsm app -- " # Needed to launch applications correctly under uwsm
+app_launch_prefix = "uwsm-app -- " # Needed to launch applications correctly under uwsm
 terminal_title_flag = ""
 locale = ""
 close_when_open = false
