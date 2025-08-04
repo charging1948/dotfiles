@@ -44,6 +44,10 @@ input_path = './templates/cava-colors.ini'
 output_path = '~/.config/cava/themes/matugen'
 post_hook = "pkill -USR1 cava || true"
 
+[templates.zathura]
+input_path = './templates/zathura-colors'
+output_path = '~/.config/zathura/zathurarc'
+
 # [templates.fuzzel]
 # input_path = './templates/fuzzel.ini'
 # output_path = '~/.config/fuzzel/colors.ini'
