@@ -8,6 +8,10 @@
 input_path = './templates/hyprland.conf'
 output_path = '~/.config/hypr/theme.conf'
 
+[templates.ghostty]
+input_path = './templates/ghostty.theme'
+output_path = '~/.config/ghostty/themes/matugen'
+
 [templates.fuzzel]
 input_path = './templates/fuzzel.ini'
 output_path = '~/.config/fuzzel/colors.ini'
