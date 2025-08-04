@@ -8,6 +8,10 @@
 input_path = './templates/hyprland.conf'
 output_path = '~/.config/hypr/theme.conf'
 
+[templates.quickshell]
+input_path = './templates/quickshell.qml'
+output_path = '~/.config/quickshell/config/Colors.qml'
+
 [templates.ghostty]
 input_path = './templates/ghostty.theme'
 output_path = '~/.config/ghostty/themes/matugen'
