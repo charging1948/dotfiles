@@ -1,8 +1,4 @@
 [config]
-# command = "notify-send"
-# arguments = [""]
-# set = false
-
 
 [templates.hyprland]
 input_path = './templates/hyprland.conf'
@@ -32,12 +28,14 @@ output_path = '~/.config/qt6ct/colors/theme.conf'
 
 [templates.gtk3]
 input_path = './templates/gtk-colors.css'
-output_path = '~/.config/gtk-3.0/colors.css'
-post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+output_path = '~/.config/gtk-3.0/gtk.css'
+# post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{ mode | to_lower }}; dconf write /org/gnome/desktop/interface/color-scheme prefer-{{mode | to_lower }}; dconf write /org/gnome/desktop/interface/icon-theme Papirus-{{mode}}'
+post_hook = 'apply-theme.sh {{mode}}'
 
 [templates.gtk4]
 input_path = './templates/gtk-colors.css'
-output_path = '~/.config/gtk-4.0/colors.css'
+output_path = '~/.config/gtk-4.0/gtk.css'
+# post_hook = 'notify-send {{"Test" | to_lower }}'
 
 [templates.btop]
 input_path = './templates/btop.theme'
