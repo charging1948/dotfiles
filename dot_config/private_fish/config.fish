@@ -25,7 +25,11 @@ status is-interactive; and begin
 
     zoxide init fish | source
 
-    direnv hook fish | source
+    if type -q direnv
+        direnv hook fish | source
+    else
+        echo "Direnv not installed. Ignoring."
+    end
 
     atuin init fish | source
 
