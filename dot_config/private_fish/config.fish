@@ -15,7 +15,6 @@ status is-interactive; and begin
     # Aliases
     alias cd z
     alias cdi zi
-    alias wp-switch 'swww img $(fd --extension "gif" --follow . ~/Pictures/Wallpapers/ | fzf --preview='\''preview_gif {}'\'')'
 
     # Short aliases
     alias s1='birdstrike-vm'
@@ -38,5 +37,7 @@ status is-interactive; and begin
     end
     starship init fish | source
     enable_transience
+
+    set -g fish_key_bindings fish_vi_key_bindings
 
 end
