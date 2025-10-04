@@ -39,6 +39,12 @@ esac
 # Add uutils as their unaliased versions (thus replacing the normal coreutils)
 export PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:$PATH"
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/jk/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
 export PATH
 
 export EDITOR="nvim"
@@ -72,9 +78,4 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
-
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/jk/.lmstudio/bin"
-# End of LM Studio CLI section
 
