@@ -1,5 +1,5 @@
 function openhands
-    set -l OPENHANDS_VERSION 0.57.2
+    set -l OPENHANDS_VERSION 0.58
     set -l OPENHANDS_RUNTIME docker.all-hands.dev/all-hands-ai/runtime:$OPENHANDS_VERSION-nikolaik
     set -l OPENHANDS_IMAGE docker.all-hands.dev/all-hands-ai/openhands:$OPENHANDS_VERSION
 

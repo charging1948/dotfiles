@@ -41,3 +41,8 @@ status is-interactive; and begin
     set -g fish_key_bindings fish_vi_key_bindings
 
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/jk/.lmstudio/bin
+# End of LM Studio CLI section
+

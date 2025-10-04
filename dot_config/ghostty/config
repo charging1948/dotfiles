@@ -48,3 +48,4 @@ font-size = 16
 theme = "matugen"
 
 command = /usr/bin/fish --login --interactive -C "cd ~"
+keybind = shift+enter=text:\x1b\r
