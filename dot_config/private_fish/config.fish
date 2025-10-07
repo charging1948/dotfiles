@@ -7,6 +7,8 @@ function birdstrike-ai
     sshpass -f ~/.ssh/local_servers_password ssh -A birdstrike-ai $argv
 end
 
+set -gx PATH $PATH /home/jk/.local/bin
+
 status is-interactive; and begin
 
     # Abbreviations
