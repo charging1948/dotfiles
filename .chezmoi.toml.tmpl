@@ -9,12 +9,7 @@ encryption = "age"
     autoPush = true
 
 [diff]
-    command = "meld"
-    args = [
-        "-d",
-        {{ printf "%q" "{{ .Destination }}" }},
-        {{ printf "%q" "{{ .Target }}" }},
-    ]
+    pager = "delta"
     exclude = ["scripts"]
 
 [merge]
