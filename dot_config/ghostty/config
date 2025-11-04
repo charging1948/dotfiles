@@ -47,5 +47,6 @@ font-size = 16
 
 theme = "matugen"
 
-command = /usr/bin/fish --login --interactive -C "cd ~"
+working-directory = home
+command = /usr/bin/fish --interactive --login
 keybind = shift+enter=text:\x1b\r
