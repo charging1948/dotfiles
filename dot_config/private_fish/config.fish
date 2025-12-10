@@ -48,3 +48,10 @@ end
 set -gx PATH $PATH /home/jk/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+# pnpm
+set -gx PNPM_HOME "/home/jk/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
