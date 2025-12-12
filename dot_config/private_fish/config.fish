@@ -9,6 +9,10 @@ end
 
 set -gx PATH $PATH /home/jk/.local/bin
 
+if type -q cargo
+    set -gx PATH "$HOME/.cargo/bin" $PATH
+end
+
 status is-interactive; and begin
 
     # Abbreviations
@@ -28,8 +32,6 @@ status is-interactive; and begin
 
     if type -q direnv
         direnv hook fish | source
-    else
-        echo "Direnv not installed. Ignoring."
     end
 
     atuin init fish | source
