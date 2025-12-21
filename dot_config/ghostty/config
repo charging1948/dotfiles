@@ -50,3 +50,6 @@ theme = "matugen"
 working-directory = home
 command = /usr/bin/fish --interactive --login
 keybind = shift+enter=text:\x1b\r
+
+# Ghostty will try to install the terminfo entry first and use the fallback if installation failed.
+shell-integration-features = ssh-terminfo,ssh-env
