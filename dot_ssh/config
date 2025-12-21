@@ -3,6 +3,7 @@ AddKeysToAgent yes
 Host *
   AddKeysToAgent yes
   ForwardAgent Yes
+  SetEnv TERM=xterm-256color
 
 Host j-sh.de
   SetEnv TERM=xterm-256color
@@ -42,3 +43,9 @@ Host birdstrike-ai
   PasswordAuthentication yes
   ForwardAgent yes
   SetEnv TERM=xterm-256color
+
+Host usbproxy
+  HostName usbproxy.local
+  User jk
+  SetEnv TERM=xterm-256color
+  IdentityFile ~/.ssh/usbproxy_ed25519
