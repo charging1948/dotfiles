@@ -3,6 +3,7 @@
 [templates.hyprland]
 input_path = './templates/hyprland.conf'
 output_path = '~/.config/hypr/theme.conf'
+post_hook = 'killall -SIGUSR2 hyprlock || true'
 
 [templates.hyprpaper]
 input_path = './templates/hyprpaper.conf'
@@ -16,7 +17,6 @@ output_path = '~/.config/quickshell/config/Colors.qml'
 [templates.ghostty]
 input_path = './templates/ghostty.theme'
 output_path = '~/.config/ghostty/themes/matugen'
-# INFO: Enable this only when using ghostty release version of at least 1.14 (not out yet)
 post_hook = 'killall -SIGUSR2 ghostty || true'
 
 [templates.fuzzel]

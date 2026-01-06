@@ -9,3 +9,4 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 
 export SDL_VIDEODRIVER="wayland,x11" # set to x11 if games that provide older versions of sdl2 cause compat. issues
 export CLUTTER_BACKEND="wayland"
+export ELECTRON_OZONE_PLATFORM_HINT="wayland"

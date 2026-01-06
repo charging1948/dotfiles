@@ -6,78 +6,118 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Setup BREW (if available)
+# ============================================================================
+# PATH Configuration
+# ============================================================================
+
+# Setup Homebrew (if available)
 if [ -d /home/linuxbrew/.linuxbrew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
+    
     if ! [[ "$PATH" =~ "$(brew --prefix rustup)/bin:" ]]; then
         PATH="$(brew --prefix rustup)/bin:$PATH"
     fi
 fi
 
-# Setup SSH Agent
-if [[ "$SSH_AUTH_SOCK" = "" ]]; then
-    eval `ssh-agent` >/dev/null 2>/dev/null
-fi
+# uutils-coreutils (replaces GNU coreutils)
+PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:$PATH"
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
+# Cargo binaries
 if ! [[ "$PATH" =~ "$HOME/.cargo/bin:" ]]; then
     PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# User binaries
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
 # pnpm
 export PNPM_HOME="/home/jk/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+    *":$PNPM_HOME:"*) ;;
+    *) PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
-# Add uutils as their unaliased versions (thus replacing the normal coreutils)
-export PATH="/home/linuxbrew/.linuxbrew/opt/uutils-coreutils/libexec/uubin:$PATH"
-
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/jk/.lmstudio/bin"
-# End of LM Studio CLI section
-
-
-export PATH="$PATH:/home/jk/.local/bin"
+# LM Studio CLI
+PATH="$PATH:/home/jk/.lmstudio/bin"
 
 export PATH
 
+# ============================================================================
+# Environment Variables
+# ============================================================================
+
 export EDITOR="nvim"
 
-# Drop into fish, if not inside login shell or if executed as "bash -c 'xxxx'"
-# Only in interactive shells and when desktop session is already running
-# $- == *i* && 
-if [[ $- == *i* && $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
-then
-    # shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-    # exec fish $LOGIN_OPTION
- 
-    # Check if desktop session is fully started (not during startup)
-    if [[ -n ${XDG_CURRENT_DESKTOP} && -n ${XDG_SESSION_TYPE} && ( -n ${KDE_FULL_SESSION} || -n ${PLASMA_DESKTOP_SESSION} ) ]]
-    then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-        exec fish $LOGIN_OPTION
-    fi
+# ============================================================================
+# SSH Agent Setup
+# ============================================================================
+
+if [[ -z "$SSH_AUTH_SOCK" ]]; then
+    eval $(ssh-agent) >/dev/null 2>/dev/null
 fi
 
+# ============================================================================
+# Interactive Shell Configuration
+# ============================================================================
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+if [[ $- == *i* ]]; then
+    # Aliases
+    alias lg='lazygit'
+    alias cd='z'
+    alias cdi='zi'
+    alias s1='birdstrike-vm'
+    alias s2='birdstrike-ai'
+    
+    # Vi key bindings
+    set -o vi
+    
+    # Initialize tools (if available)
+    command -v zoxide &> /dev/null && eval "$(zoxide init bash)"
+    command -v direnv &> /dev/null && eval "$(direnv hook bash)"
+    command -v atuin &> /dev/null && eval "$(atuin init bash)"
+fi
 
-# User specific aliases and functions
+# ============================================================================
+# Auto-switch to Fish Shell
+# ============================================================================
+
+# Switch to fish if:
+# - Running interactively
+# - Parent process is not already fish
+# - Not running as "bash -c 'command'"
+# - Shell level is 1 (not nested)
+# - Desktop session is fully started
+# if [[ $- == *i* ]] && \
+#    [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" ]] && \
+#    [[ -z ${BASH_EXECUTION_STRING} ]] && \
+#    [[ ${SHLVL} == 1 ]] && \
+#    [[ -n ${XDG_CURRENT_DESKTOP} ]] && \
+#    [[ -n ${XDG_SESSION_TYPE} ]] && \
+#    [[ -n ${KDE_FULL_SESSION} || -n ${PLASMA_DESKTOP_SESSION} ]]; then
+#
+#     shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+#     exec fish $LOGIN_OPTION
+# fi
+
+# ============================================================================
+# Source Additional Configuration Files
+# ============================================================================
+
 if [ -d ~/.bashrc.d ]; then
     for rc in ~/.bashrc.d/*; do
         if [ -f "$rc" ]; then
             . "$rc"
         fi
     done
+    unset rc
 fi
-unset rc
 
+
+# ============================================================================
+    # Load Prompt at last
+# ============================================================================
+if [[ $- == *i* ]]; then
+    command -v starship &> /dev/null && eval "$(starship init bash)"
+fi
