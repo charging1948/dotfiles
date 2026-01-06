@@ -1,5 +1,7 @@
 [config]
 
+import_json_files = ["./font.json"]
+
 [templates.hyprland]
 input_path = './templates/hyprland.conf'
 output_path = '~/.config/hypr/theme.conf'
@@ -18,10 +20,6 @@ output_path = '~/.config/quickshell/config/Colors.qml'
 input_path = './templates/ghostty.theme'
 output_path = '~/.config/ghostty/themes/matugen'
 post_hook = 'killall -SIGUSR2 ghostty || true'
-
-[templates.fuzzel]
-input_path = './templates/fuzzel.ini'
-output_path = '~/.config/fuzzel/colors.ini'
 
 [templates.qt5ct]
 input_path = './templates/qtct-colors.conf'
@@ -55,6 +53,7 @@ post_hook = "pkill -USR1 cava || true"
 input_path = './templates/zathura-colors'
 output_path = '~/.config/zathura/zathurarc'
 
-# [templates.fuzzel]
-# input_path = './templates/fuzzel.ini'
-# output_path = '~/.config/fuzzel/colors.ini'
+[templates.fuzzel]
+input_path = './templates/fuzzel.ini'
+output_path = '~/.config/fuzzel/colors.ini'
+
