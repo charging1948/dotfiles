@@ -8,6 +8,8 @@ fi
 # User specific environment and startup programs
 export ELECTRON_OZONE_PLATFORM_HINT=auto
 
+export XCURSOR_SIZE=24
+export XCURSOR_THEME="Bibata-Modern-Ice"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/jk/.lmstudio/bin"
