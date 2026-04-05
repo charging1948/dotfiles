@@ -13,6 +13,10 @@ if type -q cargo
     set -gx PATH "$HOME/.cargo/bin" $PATH
 end
 
+if type -q yarn
+    set -gx PATH "$HOME/.yarn/bin" $PATH
+end
+
 status is-interactive; and begin
 
     # Abbreviations
@@ -22,9 +26,7 @@ status is-interactive; and begin
     alias cd z
     alias cdi zi
 
-    # Short aliases
-    alias s1='birdstrike-vm'
-    alias s2='birdstrike-ai'
+    alias j just
 
     set fish_greeting # Disable greeting
 
