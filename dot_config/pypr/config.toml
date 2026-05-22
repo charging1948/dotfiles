@@ -1,0 +1,10 @@
+[pyprland]
+plugins = [
+    "scratchpads",
+    "gamemode",
+    "magnify",
+]
+
+[gamemode]
+auto = true
+patterns = ["steam_app_*", "gamescope*", "lutris_*"]
