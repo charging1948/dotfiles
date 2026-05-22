@@ -44,6 +44,6 @@ Host birdstrike-ai
   SetEnv TERM=xterm-256color
 
 Host usbproxy
-  HostName usbproxy.local
+  HostName 10.0.0.176
   User jk
   IdentityFile ~/.ssh/usbproxy_ed25519
